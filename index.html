@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLBB Diamond Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .product, .order-form, .order-summary {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product h2, .order-form h2, .order-summary h2 {
+            margin: 0;
+        }
+        .product p {
+            margin: 10px 0;
+        }
+        .order-button, .submit-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        .order-button:hover, .submit-button:hover {
+            background-color: #218838;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MLBB Diamond Store</h1>
+    </header>
+    <div class="container">
+        <div class="product">
+            <h2>100 Diamonds</h2>
+            <p>Price: $1.99</p>
+            <button class="order-button" onclick="placeOrder('100 Diamonds')">Place Order</button>
+        </div>
+        <div class="product">
+            <h2>500 Diamonds</h2>
+            <p>Price: $9.99</p>
+            <button class="order-button" onclick="placeOrder('500 Diamonds')">Place Order</button>
+        </div>
+        <div class="product">
+            <h2>1000 Diamonds</h2>
+            <p>Price: $19.99</p>
+            <button class="order-button" onclick="placeOrder('1000 Diamonds')">Place Order</button>
+        </div>
+        
+        <div class="order-form hidden" id="orderForm">
+            <h2>Order Details</h2>
+            <label for="serverId">Server ID:</label>
+            <input type="text" id="serverId" name="serverId" required><br><br>
+            <label for="zoneId">Zone ID:</label>
+            <input type="text" id="zoneId" name="zoneId" required><br><br>
+            <input type="hidden" id="selectedPack">
+            <button class="submit-button" onclick="submitOrder()">Submit Order</button>
+        </div>
+        
+        <div class="order-summary hidden" id="orderSummary">
+            <h2>Order Confirmation</h2>
+            <p><strong>New Order</strong></p>
+            <p>ID: <span id="summaryId"></span></p>
+            <p>Zone ID: <span id="summaryZoneId"></span></p>
+            <p>Pack: <span id="summaryPack"></span></p>
+            <p>Thank You For Using MLBB Diamond Store. Your Order Has Been Delivered, Kindly Wait For Your Turn To Come. We Will Notify You Once The Order Has Been Successfully Executed.</p>
+            <p><strong>Note:</strong> Please Be Sure To Input A Correct ID As We Won't Be Responsible For The Losses</p>
+        </div>
+    </div>
+
+    <script>
+        function placeOrder(pack) {
+            document.getElementById('orderForm').classList.remove('hidden');
+            document.getElementById('selectedPack').value = pack;
+        }
+
+        function submitOrder() {
+            var serverId = document.getElementById('serverId').value;
+            var zoneId = document.getElementById('zoneId').value;
+            var selectedPack = document.getElementById('selectedPack').value;
+
+            document.getElementById('summaryId').innerText = serverId;
+            document.getElementById('summaryZoneId').innerText = zoneId;
+            document.getElementById('summaryPack').innerText = selectedPack;
+
+            document.getElementById('orderForm').classList.add('hidden');
+            document.getElementById('orderSummary').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
