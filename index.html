@@ -20,14 +20,14 @@
         .container {
             padding: 20px;
         }
-        .product, .order-form, .order-summary {
+        .product, .order-form {
             background: #fff;
             padding: 15px;
             margin: 10px 0;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .product h2, .order-form h2, .order-summary h2 {
+        .product h2, .order-form h2 {
             margin: 0;
         }
         .product p {
@@ -81,16 +81,6 @@
             <input type="hidden" id="selectedPack">
             <button class="submit-button" onclick="submitOrder()">Submit Order</button>
         </div>
-        
-        <div class="order-summary hidden" id="orderSummary">
-            <h2>Order Confirmation</h2>
-            <p><strong>New Order</strong></p>
-            <p>ID: <span id="summaryId"></span></p>
-            <p>Zone ID: <span id="summaryZoneId"></span></p>
-            <p>Pack: <span id="summaryPack"></span></p>
-            <p>Thank You For Using MLBB Diamond Store. Your Order Has Been Delivered, Kindly Wait For Your Turn To Come. We Will Notify You Once The Order Has Been Successfully Executed.</p>
-            <p><strong>Note:</strong> Please Be Sure To Input A Correct ID As We Won't Be Responsible For The Losses</p>
-        </div>
     </div>
 
     <script>
@@ -104,12 +94,11 @@
             var zoneId = document.getElementById('zoneId').value;
             var selectedPack = document.getElementById('selectedPack').value;
 
-            document.getElementById('summaryId').innerText = serverId;
-            document.getElementById('summaryZoneId').innerText = zoneId;
-            document.getElementById('summaryPack').innerText = selectedPack;
+            var whatsappNumber = 'YOUR_WHATSAPP_NUMBER'; // Replace with your WhatsApp number
+            var message = `New Order\nID: ${serverId}\nZone ID: ${zoneId}\nPack: ${selectedPack}\n\nThank You For Using MLBB Diamond Store. Your Order Has Been Delivered, Kindly Wait For Your Turn To Come. We Will Notify You Once The Order Has Been Successfully Executed.\n\nNote: Please Be Sure To Input A Correct ID As We Won't Be Responsible For The Losses`;
 
-            document.getElementById('orderForm').classList.add('hidden');
-            document.getElementById('orderSummary').classList.remove('hidden');
+            var whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+            window.location.href = whatsappUrl;
         }
     </script>
 </body>
