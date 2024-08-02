@@ -94,7 +94,7 @@
             var zoneId = document.getElementById('zoneId').value;
             var selectedPack = document.getElementById('selectedPack').value;
 
-            var whatsappNumber = 'YOUR_WHATSAPP_NUMBER'; // Replace with your WhatsApp number
+            var whatsappNumber = '9365306485'; // Replace with your WhatsApp number
             var message = `New Order\nID: ${serverId}\nZone ID: ${zoneId}\nPack: ${selectedPack}\n\nThank You For Using MLBB Diamond Store. Your Order Has Been Delivered, Kindly Wait For Your Turn To Come. We Will Notify You Once The Order Has Been Successfully Executed.\n\nNote: Please Be Sure To Input A Correct ID As We Won't Be Responsible For The Losses`;
 
             var whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
