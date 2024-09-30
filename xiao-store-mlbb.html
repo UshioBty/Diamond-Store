@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XIAO STORE - Game Top-up</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #fff;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            color: black;
+            font-size: 24px;
+            font-weight: normal;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .slider {
+            text-align: center;
+            background-color: #ddd;
+            padding: 50px;
+            font-size: 18px;
+            color: #666;
+            font-weight: normal;
+        }
+        @keyframes slidy {
+            0% { left: 0%; }
+            20% { left: 0%; }
+            25% { left: -100%; }
+            45% { left: -100%; }
+            50% { left: -200%; }
+            70% { left: -200%; }
+            75% { left: -300%; }
+            95% { left: -300%; }
+            100% { left: -400%; }
+        }
+        div#slider { overflow: hidden; }
+        div#slider figure img { width: 20%; float: left; }
+        div#slider figure { 
+            position: relative;
+            width: 500%;
+            margin: 0;
+            left: 0;
+            text-align: left;
+            font-size: 0;
+            animation: 15s slidy infinite; 
+        }
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            justify-items: center;
+        }
+        .product-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 100px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .product-item:hover {
+            transform: scale(1.05);
+        }
+        .product-item img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+            border-radius: 15px;
+        }
+        .product-item p {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+            font-weight: normal;
+        }
+        .input-container {
+            text-align: center;
+            margin: 20px 0;
+            border: 1px solid grey;
+            border-radius: 15px;
+            padding: 10px;
+            margin: 10px;
+        }
+        .input-container label {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .input-container input {
+            padding: 10px;
+            width: 250px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .input-container input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        .admin-selection {
+            display: flex;
+            justify-content: center; /* Center align items */
+            gap: 20px; /* Space between items */
+            margin-top: 20px; /* Space above the section */
+        }
+        .admin-item {
+            background-color: #4CAF50; /* Button color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 15px 30px; /* Padding around the text */
+            text-align: center; /* Center the text */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s, transform 0.3s; /* Animation effects */
+        }
+        .admin-item:hover {
+            background-color: #45a049; /* Darker shade on hover */
+            transform: scale(1.05); /* Slightly increase size on hover */
+        }
+        .admin-item.selected {
+            border: 2px solid #FFD700; /* Golden border for selected item */
+        }
+        .place-order-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .place-order-btn:hover {
+            background-color: #45a049;
+        }
+        label {
+            text-align: left;
+            margin: 25px;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Section 1: Website Name -->
+    <section id="header" class="header">
+        <header>XIAO STORE</header>
+    </section><br><br><br>
+
+    <!-- Section 2: Sliding Image Placeholder -->
+    <section id="image-slide" class="image-slide">
+        <div id="slider">
+            <figure>
+                <img src="banner.jpg" alt>
+                <img src="taj-mahal_copy.jpg" alt>
+                <img src="ibiza.jpg" alt>
+                <img src="ankor-wat.jpg" alt>
+                <img src="Event.jpg" alt>
+            </figure>
+        </div>
+    </section><br><br><br>
+
+    <!-- Section 3: Product List (Diamond Prices) -->
+    <h2 style="text-align: center;">Diamond Top-Up Prices</h2>
+    <section class="product-list" id="product-list">
+        <div class="product-item" data-product="5 Diamonds - 13₹">
+            <img src="small.png" alt="5 Diamonds">
+            <p>5 Diamonds <br> 13₹</p>
+        </div>
+        <div class="product-item" data-product="11 Diamonds - 20₹">
+            <img src="semi-small.png" alt="11 Diamonds">
+            <p>11 Diamonds <br> 20₹</p>
+        </div>
+        <!-- More products here -->
+    </section>
+
+    <section id="order" class="order">
+        <div class="input-container">
+            <label for="player-id">Player ID:</label>
+            <input type="text" id="player-id" placeholder="E.g. 1234567890"><br>
+            
+            <label for="server-id">Server ID:</label>
+            <input type="text" id="server-id" placeholder="E.g. 12345"><br>
+
+            <!-- Admin Selection -->
+            <label>Select Admin:</label>
+            <div class="admin-selection">
+                <div class="admin-item" data-admin="Admin 1">Admin 1</div>
+                <div class="admin-item" data-admin="Admin 2">Admin 2</div>
+            </div>
+            <br><br>
+
+            <p class="error-message" id="error-message" style="display: none;"></p>
+
+            <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+        </div><br><br><br>
+    </section><br><br><br>
+
+    <!-- Section 4: Footer with Legal Details -->
+    <footer class="footer">
+        <p>&copy; 2024 XIAO STORE. All rights reserved.</p>
+        <p>Legal disclaimers and details about game top-up services.</p>
+    </footer>
+
+    <script>
+let selectedAdmin = null;
+let selectedProduct = '';
+
+// Admin numbers template
+const adminNumbers = {
+    "Admin 1": "84537 18366",
+    "Admin 2": "YOUR_ADMIN_2_NUMBER_HERE",
+    // Add more admins as needed
+};
+
+// Add event listeners for admin selection
+document.querySelectorAll('.admin-item').forEach(item => {
+    item.addEventListener('click', function() {
+        // Remove the selected class from all items
+        document.querySelectorAll('.admin-item').forEach(admin => {
+            admin.classList.remove('selected'); // Remove selected class
+        });
+        
+        // Add the selected class to the clicked item
+        this.classList.add('selected'); // Highlight selected admin
+        selectedAdmin = this.getAttribute('data-admin'); // Store the selected admin
+    });
+});
+
+// Selecting product when clicked
+document.querySelectorAll('.product-item').forEach(item => {
+    item.addEventListener('click', function() {
+        selectedProduct = this.getAttribute('data-product');
+        document.querySelectorAll('.product-item').forEach(item => {
+            item.style.border = 'none'; // Reset border of all items
+        });
+        this.style.border = '2px solid #4CAF50'; // Highlight selected item
+    });
+});
+
+// Modify the "Place Order" click event to include the selected admin
+document.querySelector('.place-order-btn').addEventListener('click', function() {
+    const playerID = document.getElementById('player-id').value;
+    const serverID = document.getElementById('server-id').value;
+
+    const errorMessage = document.getElementById('error-message');
+
+    // Check if all inputs are filled
+    if (!selectedProduct) {
+        errorMessage.innerText = 'Please select a product.';
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    if (!playerID || !serverID) {
+        errorMessage.innerText = 'Please enter Player ID and Server ID.';
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    // Check if an admin is selected
+    if (!selectedAdmin) {
+        errorMessage.innerText = 'Please select an admin.';
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    // Get the selected admin's number from the adminNumbers object
+    const adminNumber = adminNumbers[selectedAdmin];
+
+    // WhatsApp URL with pre-written message
+    const message = `XIAO STORE\n\nGame: Mobile Legends\nProduct: ${selectedProduct}\nID: ${playerID}\nServer ID: ${serverID}\nAdmin: ${selectedAdmin}\n\nThank you for purchasing from XIAO STORE`;
+    const whatsappURL = `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
+
+    // Redirect to WhatsApp
+    window.location.href = whatsappURL;
+});
+</script>
+</body>
+</html>
